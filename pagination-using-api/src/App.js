@@ -24,7 +24,7 @@ function App() {
     // 2.
     // We can use fetch() to get all the products from api.
        // After providing the URL in fetch() it becomes a asynchronous call, hence we need to provide await to resolve the promise 
-    const response = await fetch("https://dummyjson.com/products?limit=100");
+    const response = await fetch(`https://dummyjson.com/products?limit=10&skip=${page * 10 - 10}`);
     
     // 3.
     // Converting the response into json format.
@@ -35,7 +35,7 @@ function App() {
     // doing a check that data and data.products have values inside them then only setProducts
     if( data && data.products) {
       setProducts(data.products);
-      setTotalPages(data.total)
+      setTotalPages(data.total / 10)
     }
     // 4. 
     console.log(data);
@@ -67,7 +67,7 @@ const selectPageHandler = (selectedPage) => {
       {
         products.length> 0 && <div className="container" >
           {
-            products.slice(page * 10 - 10, page*10).map((product) => {
+            products.map((product) => {
             return (
               <div className="products" key={product.id}>
                 <img src= {product.thumbnail} alt={product.title}/>
