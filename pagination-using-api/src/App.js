@@ -43,8 +43,8 @@ function App() {
 
   // 5. 
   useEffect(() => {
-    fetchProducts()
-  }, [])
+    fetchProducts();
+  }, [page])
 
 // 13. 
 const selectPageHandler = (selectedPage) => {
