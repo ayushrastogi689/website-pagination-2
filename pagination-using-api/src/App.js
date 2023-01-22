@@ -11,6 +11,10 @@ function App() {
   // useState for handling pagination
   const [page, setPage] = useState(1);
 
+  // Now we don't know how many products will be there in total 
+
+  const [totalPages, setTotalPages] = useState(0);
+
 
 
   // 1.
@@ -31,6 +35,7 @@ function App() {
     // doing a check that data and data.products have values inside them then only setProducts
     if( data && data.products) {
       setProducts(data.products);
+      setTotalPages(data.total)
     }
     // 4. 
     console.log(data);
