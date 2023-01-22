@@ -50,7 +50,7 @@ function App() {
 const selectPageHandler = (selectedPage) => {
   // 14. 
   // there is no page such as 0, so we are going to add a check
-  if(selectedPage >=1 && selectedPage <= products.length/10 && selectedPage !== page)
+  if(selectedPage >=1 && selectedPage <= totalPages && selectedPage !== page)
   setPage(selectedPage)
 }
 
@@ -86,7 +86,7 @@ const selectPageHandler = (selectedPage) => {
           </span>
           
           {
-            [...Array(products.length/10)].map((_,index)=>{
+            [...Array(totalPages)].map((_,index)=>{
               return (
                     <span className={page === index+1 ? "selected" : ""} 
                       onClick={()=>selectPageHandler(index+1)} key={index}>{index+1}
@@ -95,7 +95,7 @@ const selectPageHandler = (selectedPage) => {
             })
           }
 
-          <span className={page< products.length/10 ?"":"pagination_disabled"} onClick={()=>selectPageHandler(page+1)}>
+          <span className={page< totalPages ?"":"pagination_disabled"} onClick={()=>selectPageHandler(page+1)}>
             <i class="fa-solid fa-square-caret-right"></i>
           </span>
           
